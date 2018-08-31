@@ -1,0 +1,7 @@
+# yii2 carpetas que no van a subir
+web/assets/
+web/assets/requerimientos/
+runtime/
+vendor/
+Manuales/
+db_backup/

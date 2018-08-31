@@ -1,0 +1,10 @@
+# mas infor
+https://gist.github.com/dasdo/9ff71c5c0efa037441b6
+
+Para subir archivos nuevos y modificados
+git add .    # esto agregar nuevos archivos y los cambios, lo que hace es ponerlo en un estado temporal para ser agregado al repositorio
+git commit -m "comentario de lo que estas subiendo"  ## esta linea ayuda a saber que lo que has hecho en ese nuevo codigo o modificado
+git push o git push origin master  ## como lo vamos a trabajar en la rama master solo pondriamos git push, despues veremos ese tema de muchas ramas, preferible obviar para no confundirnos :)
+git merge # esto se utiliza una vez que se haya hecho un git pull
+
+git pull ## es para poder descargar el codigo q esta en el git
