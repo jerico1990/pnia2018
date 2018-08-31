@@ -65,7 +65,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
     </style>
 </head>
 
-<?php 
+<?php
 
     /// segmento de login y creación de la barra de menus
     $menuOptions = [];
@@ -88,20 +88,20 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
         $num_mensajes = count($mensajes);
 
         $menuOptions[] = ["label" => 'Home ('.$userMessage.')', "url" => $rootUrl  = Url::base(), "icon" => "home"];
-        
-        
+
+
         /// aqui si se desea que recargue cada vez que carga la pagina
-        $myItems = Yii::$app->user->identity->getRolMenuItems(); 
-        
-        /// aqui para que se cargue solo con la Sesión 
+        $myItems = Yii::$app->user->identity->getRolMenuItems();
+
+        /// aqui para que se cargue solo con la Sesión
         /*$myItems = [];
         if( isset($_SESSION['menuOptions']) && count($_SESSION['menuOptions']) > 0){
-           $myItems = $_SESSION['menuOptions']; 
+           $myItems = $_SESSION['menuOptions'];
         } else {
-            $_SESSION['menuOptions'] = Yii::$app->user->identity->getRolMenuItems(); 
-            $myItems = $_SESSION['menuOptions'];// Yii::$app->user->identity->getRolMenuItems(); 
+            $_SESSION['menuOptions'] = Yii::$app->user->identity->getRolMenuItems();
+            $myItems = $_SESSION['menuOptions'];// Yii::$app->user->identity->getRolMenuItems();
         }// */
-        /// aqui para que se cargue solo con la Sesión 
+        /// aqui para que se cargue solo con la Sesión
 
     foreach ($myItems as $item ) {
             $menuOptions[] = $item;
@@ -122,7 +122,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 <?php $this->beginBody(); ?>
 
 <!-- <div class = "container body">-->
-<div class="container body" style="width : auto; display: inline-block;">
+<div class="container body" >
     <div class="main_container">
 
         <div class="col-md-3 left_col">
@@ -130,8 +130,8 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 
                 <div class="navbar nav_title" style="border: 0;">
                     <a href=<?= '"'.Url::base().'"' ?> class="site_title">
-                        
-                        <?php 
+
+                        <?php
                         $img = Url::base().'/icons/logo-pnia-blanco.png';
                         ?>
                     <center>
@@ -160,7 +160,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
                     <div class="menu_section">
-                        
+
                         <?=
                         \yiister\gentelella\widgets\Menu::widget(
                             [
@@ -241,7 +241,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                 <span class="badge bg-green"><?php echo $num_mensajes ?></span>
                             </a>
                             <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                
+
                                 <?php for ($i=0; $i < min($num_mensajes,$max_num_mensajes); $i++) { ?>
                                 <li>
                                     <a>
@@ -256,7 +256,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                     </a>
                                 </li>
                                 <?php } ?>
-                                
+
                                 <li>
                                     <div class="text-center">
                                         <?php if ($num_mensajes > 0) { ?>
