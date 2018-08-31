@@ -1,0 +1,78 @@
+Manual para crear Grillas Multiples:
+
+Establecer un nuevo identificador para las tablas hijas (views/tabla_hija/index.php):
+
+<?=GridView::widget([
+            'id'=>'crud-datatable-tabla-hija',  // <=== AQUI CAMBIAR 
+
+En el controlador de la tabla hija, cambiar los:
+		'forceReload'=>'#crud-datatable-pjax'
+	por 'forceReload'=>'#crud-datatable-tabla-hija-pjax' (el mismo texto que se haya elegido previamente para remplazar "tabla-hija")   
+
+En la vista/_columns del controlador padre colocar: 
+
+<script type="text/javascript">
+
+    function cargarId(id,key){
+        $.ajax({
+            url: "<?= Url::base() ?>/behavior-controller/enviar-session",
+            method: 'POST',
+            data: {
+                key : id,
+            },
+            success:function(text){
+                //alert(codigo_interno_contrato_visible);
+                var tablas_anexas = document.getElementById('tablas_anexas');
+                tablas_anexas.style.display = 'block';
+                $.pjax.reload({
+                    container:'#crud-datatable-presupuesto',
+                });
+                $.pjax.xhr = null;
+            },
+            fail:function(text){
+                alert('Hubo un error en la conexión, la data es invalida. Recargue la página porfavor.');
+            }
+        });
+    }
+</script>
+
+En la vista index del controlador padre:
+<?php Modal::end(); ?>
+<div id="tablas_anexas" style="display: none">
+<?php 
+    echo Yii::$app->controller->renderPartial('../presupuesto/index', [
+                    'searchModel'   => $searchTablaHija,
+                    'dataProvider'  => $dataTablaHija
+                ]);
+
+?>
+</div>
+
+En el controlador del padre, en actionIndex agregar el envio de los search model y data provider para la tabla hija
+        $searchTablaHija = new TablaHijaSearch();
+        $dataProviderTablaHija = $searchTablaHija->search(Yii::$app->request->queryParams);
+
+        y enviar la data :
+                        'searchPresupuestos' => $searchPresupuestos,
+                        'dataProviderPresupuestos' => $dataProviderPresupuestos,
+
+Agregar la función:
+	public function actionCreateTablaHija(){
+        return Yii::$app->runAction('xx/tabla-hija/create');
+    }
+
+En el index del hijo editar la linea donde se llama al create para que llame al nuevo create:
+Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create-tabla-hija'],
+
+Editar el campo columns de la tabla hija :
+
+'urlCreator' => function($action, $model, $key, $index) { 
+                //return Url::to([$action,'id'=>$key]);
+            $base = Url::base();
+            $text = $base."/xx/tabla-hija/".$action."?id=".$key;
+            return $text; 
+        },
+
+
+
+

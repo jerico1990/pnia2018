@@ -1,0 +1,28 @@
+Standar
+	Los nombres en STRING van en formato(nomenclatura) camel;
+
+	Una variable debe representar 2 cosas siempre:
+		¿Qué es?
+		¿Qué contiene?
+
+		Ejemplo:
+			$array_modelos_usuarios_nuevos_patrimonio  = ....
+
+			foreach($array_modelos_usuarios_nuevos_patrimonio as $usuario_actual ){
+
+			}
+
+	En una función debe de representarse que hace y que retorna:
+
+		/**
+		 * [que es lo que hace] /// OBLIGATORIO
+		 * @return {[user_models](OPCIONAL)} [modelos] 
+		 */
+		function getArrayCodigosUsuario(){
+
+			return [nuevos_usuarios];
+		}
+
+		REGLAS:
+			*variables van con los nombres separados por ' _ '
+			*las funciones van con mayuscula y minuscula (nomenclatura camel)
