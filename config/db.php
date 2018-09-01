@@ -24,7 +24,7 @@ return [
     'class' => 'yii\db\Connection',
     'dsn' => 'pgsql:host=localhost;dbname=pnia;',
     'username' => 'postgres',
-    'password' => 'areku',
+    'password' => '123456',
     'charset' => 'utf8',
 ];// */
 
