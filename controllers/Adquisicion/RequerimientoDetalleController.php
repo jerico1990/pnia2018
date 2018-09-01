@@ -125,6 +125,13 @@ class RequerimientoDetalleController extends Controller
 
                 ];
             }else if($model->load($request->post())){
+                $arrayFormasPagos = [];
+                for($i = 0 ; $i < count($model->FormaPagoDescripciones); $i++){
+                  array_push($arrayFormasPagos,[ 'descripcion' => $model->FormaPagoDescripciones[$i] , 'tiempo' => $model->FormaPagoTiempos[$i], 'porcetaje' => $model->FormaPagoPorcentajes[$i], 'condicion' => $model->FormaPagoCondiciones[$i]]);
+                }
+                //var_dump(json_encode($arrayFormasPagos));die;
+                $model->forma_pago = json_encode($arrayFormasPagos);
+                $model->fecha_entrega = date('Y-m-d H:i:s',strtotime($model->fecha_entrega));
                 $model->situacion_requerimiento_detalle_id=1; // 1 en digitación
                 $model->save();
 

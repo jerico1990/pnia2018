@@ -30,7 +30,7 @@ class m180517_000014_create_table_requerimiento_detalle extends Migration
 
             //bien
             'especificacion_tecnica' => $this->text(),
-            'tiempo_entrega' => $this->timestamp(),
+            'tiempo_entrega' => $this->string(50),
             'tipo_garantia_id' => $this->integer(11),
             'garantia_cantidad' => $this->integer(11),
             'lugar_entrega' => $this->string(), //fk a ubicaciones - utilitario_ubigeo_id

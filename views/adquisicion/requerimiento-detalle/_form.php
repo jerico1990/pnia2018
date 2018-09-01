@@ -161,29 +161,26 @@ use kartik\date\DatePicker;
     <?php //= $form->field($model, 'forma_pago')->textarea(['rows' => 6]) ?>
 
     <div class="form-group field-requerimientodetalle-forma_pago col-md-12">
+      <!--
       <label class="control-label" for="requerimientodetalle-forma_pago">Forma de Pago</label>
       <textarea id="requerimientodetalle-forma_pago" class="form-control" name="RequerimientoDetalle[forma_pago]" rows="6"></textarea>
+      -->
 
       <div class="panel panel-default">
-        <div class="panel-heading">Panel heading without title</div>
+        <div class="panel-heading">Forma de pagos</div>
         <div class="panel-body">
-          <table class="table">
+          <div class="btn btn-default pull-right btn-agregar-forma-pago"><span class="glyphicon glyphicon-plus "></span></div>
+          <table id="tabla_forma_pago" class="table">
               <thead>
                 <th>#</th>
                 <th>Descripción</th>
                 <th>Tiempo</th>
                 <th>%</th>
                 <th>Condición</th>
-                <th>Acciones</th>
+                <th>Acciones  </th>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                <tr id="detalle_forma_pago_1">
                 </tr>
               </tbody>
           </table>
@@ -281,11 +278,12 @@ $('body').on('change', '.linea-presupuestal', function (e) {
             alert('No se tiene información detallada del item');
 
           }else if(result){
-            var precio_unitario_ro = parseFloat(result.precio_unitario_ro);
-            var precio_unitario_rooc = parseFloat(result.precio_unitario_rooc);
-            var precio_ = 0;
-            precop_ = precio_unitario_ro + precio_unitario_rooc;
-            var promedio_precio_unitario = (precio_unitario_ro!=0 && precio_unitario_rooc!=0 ) ? (precio_unitario_ro + precio_unitario_rooc)/2 :  precio_ ;
+            var precio_unitario_ro = (parseFloat(result.precio_unitario_ro))?parseFloat(result.precio_unitario_ro):0.00;
+            var precio_unitario_rooc = (parseFloat(result.precio_unitario_rooc))?parseFloat(result.precio_unitario_rooc):0.00;
+            var precio_2 = 0.00;
+            precio_2 = precio_unitario_ro + precio_unitario_rooc;
+            console.log(precio_unitario_ro);
+            var promedio_precio_unitario = (precio_unitario_ro!=0 && precio_unitario_rooc!=0 ) ? (precio_unitario_ro + precio_unitario_rooc)/2 :  precio_2 ;
 
             var cantidad = parseInt(result.avance_total);
             var total = promedio_precio_unitario*cantidad;

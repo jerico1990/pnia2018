@@ -223,4 +223,50 @@ CrudAsset::register($this);
         return true;
       }
   });
+
+  var contador_forma_pago = 1 ;
+  $('body').on('click', '.btn-agregar-forma-pago', function () {
+    $('#detalle_forma_pago_'+contador_forma_pago).html(
+        '<td>'+
+          contador_forma_pago+
+        '</td>'+
+        '<td>'+
+          '<input class="form-control" type="text" name="RequerimientoDetalle[FormaPagoDescripciones][]"  >'+
+        '</td>'+
+        '<td>'+
+          '<input class="form-control" type="text" name="RequerimientoDetalle[FormaPagoTiempos][]"  >'+
+        '</td>'+
+        '<td>'+
+          '<input class="form-control" type="text" name="RequerimientoDetalle[FormaPagoPorcentajes][]">'+
+        '</td>'+
+        '<td>'+
+          '<input class="form-control" type="text" name="RequerimientoDetalle[FormaPagoCondiciones][]"  >'+
+        '</td>'+
+        '<td class="btn-eliminar">'+
+          '<span class=" glyphicon glyphicon-trash" >'+
+          '</span>'+
+        '</td>'
+    );
+    $('#tabla_forma_pago').append('<tr id="detalle_forma_pago_'+(contador_forma_pago+1)+'"></tr>');
+    contador_forma_pago++;
+    return true;
+  });
+
+  $('body').on('click', '.btn-eliminar', function () {  
+      var r = confirm("Estas seguro de Eliminar?");
+      var mensaje = '';
+      if (r == true) {
+          id=$(this).children().val();
+          if (id) {
+              $(this).parent().parent().remove();
+          }
+          else
+          {
+              $(this).parent().parent().remove();
+          }
+          mensaje = "Se elimino el Registro Correctamente";
+      }
+  });
+
+
 </script>

@@ -45,6 +45,11 @@ class RequerimientoDetalle extends ModeloGenerico
     /**
      * {@inheritdoc}
      */
+    public $FormaPagoDescripciones;
+    public $FormaPagoTiempos;
+    public $FormaPagoPorcentajes;
+    public $FormaPagoCondiciones;
+
     public static function tableName()
     {
         return 'requerimiento_detalle';
@@ -56,7 +61,7 @@ class RequerimientoDetalle extends ModeloGenerico
     public function rules()
     {
         return [
-            [['linea_nivel_id', 'cantidad', 'tipo_garantia_id', 'garantia_cantidad', 'forma_entrega', 'anio_fabricacion', 'actualizado_por', 'creado_por'], 'default', 'value' => null],
+            [['FormaPagoDescripciones', 'FormaPagoTiempos', 'FormaPagoPorcentajes', 'FormaPagoCondiciones', 'linea_nivel_id', 'cantidad', 'tipo_garantia_id', 'garantia_cantidad', 'forma_entrega', 'anio_fabricacion', 'actualizado_por', 'creado_por'], 'default', 'value' => null],
             [['requerimiento_id', 'linea_nivel_id', 'cantidad', 'tipo_garantia_id', 'garantia_cantidad', 'forma_entrega', 'anio_fabricacion', 'actualizado_por', 'creado_por'], 'integer'],
             [['costo_unitario', 'monto_total', 'rooc', 'ro'], 'number'],
             [['especificacion_tecnica', 'forma_pago', 'resumen_especificacion_tecnica', 'otras_caractaristicas', 'staff_area_id'], 'string'],
